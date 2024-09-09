@@ -1,0 +1,10 @@
+you can store images in mongodb bin buffer format but it makes it heavy
+db is not made for buffer types-images,pdf
+
+we put them in server and use public url of them which is stored in db
+or third party services
+like aws bucket,cloudinary
+
+in mongoose
+enum-enumration
+give choices

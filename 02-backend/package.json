@@ -1,0 +1,20 @@
+{
+  "name": "02-backend",
+  "version": "1.0.0",
+  "description": "a bsic app to deploy",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node",
+    "ruka"
+  ],
+  "author": "rudraksha",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

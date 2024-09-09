@@ -1,0 +1,82 @@
+>>moon modler (paid)
+is a data modeling tool for mongodb and no sql
+same syntax as monoogoose
+
+----------------------------------------------------------------
+
+>>eraser.io(also has free version)
+data modelling
+syntax is little different in moongoose
+
+----------------------------------------------------------------
+>>npm i mongoose
+data modelling
+
+if you give Category it will store categories
+if you give categories it will store categories
+
+
+/****************
+import mongoose from "mongoose";
+
+//schema is a method that take object
+const userSchema=new mongoose.Schema({})
+
+export default User=mongoose.model("User",userSchema)
+//model name , kiske basis pe ban
+// .model("User")
+//becomes plural and lowercase
+//users in monodb
+***********************/
+
+----------------------------------------------------------------
+Schema
+
+const userSchema = new mongoose.Schema(
+  {
+    userName: {
+      type: String,
+      required: true, //will not save without this field even if you dont check in user controller
+      unique: true, //will take only unique value
+      lowercase: true, //will take lowercase only
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
+    password: {
+      type: String,
+      required: [true, "password is required"], //custom error message (validation)
+    },
+  },
+  {
+    //in second object after defining structure
+    //to store when user come,modified etc(TIMESTAMPS)
+    timestamps: true,
+    //createdAt and updatedAt are created by default
+  }
+);
+----------------------------------------------------------------
+connecting 2 databases by reference give ref of name put in model("User)
+
+const todoSchema=new mongoose.Schema({
+    content:{
+        type:String,
+        required:true
+    },
+    complete:{
+        type:Boolean,
+        default:false
+    },
+    createdBy:{//to make a relation with user database
+        type:mongoose.Schema.Types.ObjectId,//after this need to give reference in next line
+        ref:"User"
+    },
+    //array of subtodos
+    subTodos:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"SubTodo"
+    }]
+},{timestamps:true})

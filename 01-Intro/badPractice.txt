@@ -1,0 +1,14 @@
+npm run built in frontend
+
+dist folder is genereated
+it is moved to backend
+
+and use static to use proxy
+
+app.use(express.static(dist));
+
+it runs the code 
+but when we update frontend then we need to delete dist folder in backend 
+and make new dist folder and put in backend again and again
+
+so we shold let them be segragated

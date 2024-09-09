@@ -1,0 +1,87 @@
+mongodb and express
+
+add to package .json
+  "type": "module", //to use
+  import express from "express";
+
+-----------------------------------------------------------
+>>npm init-utility to create package.json
+>>npm install
+
+can make command in package
+"scripts": {
+    "start":"node index.js"
+  },
+-----------------------------------------------------------
+EXPRESS
+>>npm install express
+-----------------------------------------------------------
+>>npm i dotenv
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+-----------------------------------------------------------
+digitial ocean
+
+-----------------------------------------------------------
+npm create vite@latest .
+dot to nbort create one more file inside it
+
+-----------------------------------------------------------
+ npm i axios   -library for webrequest advanced features
+//we dont need to make data in res to .json.parse,it is handled by axios
+import axios from "axios";
+
+function App() {
+  const [jokes, setJokes] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/jokes")
+      .then((res) => {
+        setJokes(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("Failed to fetch jokes.");
+      });
+  }, []);
+
+ npm i express
+
+-----------------------------------------------------------
+npm i cors
+it provide safety to application
+as we dont allow everything to enter our home
+cors=>cross origin
+and allow to take data to everything
+
+methods
+//use cors in backend 
+but we dont know port in frontend 
+
+-------------------------------------------------------------
+proxy concept
+search proxy with vite
+export default defineConfig({
+  server: {
+    proxy: {
+      '/api':'http://localhost:3000',  
+    },
+  },
+  plugins: [react()],
+})
+
+it will automATically append to the route with/api at front
+append and also it makes so that server think that url request is from this url
+so it will allow even if vite runs somewhere else
+as becaz of proxy it thiink both server and frontend working at 3000
+
+therefore we dont need to use cors
+
+-------------------------------------------------------------
+app.use()  is a middleware
