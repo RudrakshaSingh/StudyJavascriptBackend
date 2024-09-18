@@ -1,0 +1,20 @@
+even nodemon doesnt work for changes in .env file
+
+As early as possible in your application, import and configure dotenv:
+in first file like index.js
+
+---------------------------------------------------
+require('dotenv').config({path:"./env"})
+console.log(process.env) // remove this after you've confirmed it is working
+
+---------------------------------------------------
+for making it import
+
+import dotenv from "dotenv"
+dotenv.config({path:"./env"})
+
+and in package.json making it experimental feature usuage
+
+"scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+  },

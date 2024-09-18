@@ -1,0 +1,47 @@
+database connection
+
+search monogodbAtlas
+pricing 
+free
+new project
+project name
+create project
+create deployment
+choose free
+aws provider
+nearest
+cluster name
+create
+go to quickstart in security
+and see username and password and create user
+choose local environment
+ip access list
+add 0.0.0.0/0   aceess to evryone
+finish and close
+
+network access
+in production we do not allow for everywhere
+
+databse accessadd new user
+password and indexread and write any database role
+
+go to database
+
+press connect
+compass
+copy string and update password in it and remove ending slash from it
+
+database connection
+1) all code put in index file,so when index file load connection function execute right after
+2)db folder and put in file and import in index and execute
+
+2-code clean,diributed,modular
+
+
+always use database connection in try catch or promises
+db is always in another continent
+use async await
+
+connectionInstance refers to the instance of the connection returned by 
+the mongoose.connect method. This instance provides information about the 
+connection, including its status and other connection-related details.

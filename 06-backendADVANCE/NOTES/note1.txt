@@ -1,0 +1,43 @@
+git do not push empty folder
+so for temp folder for images we make a .gitkeep file in it
+
+can use gitignore genrator
+
+====utils ,utility like file uplod,mail
+
+==================================================================
+to make server start on update
+>>we use nodemon
+
+>>dev dependency=>it is only used in development
+npm install --save-dev nodemon
+or
+npm i -D nodemon
+
+ "scripts": {
+   "dev":"nodemon src/index.js"
+  },
+
+
+==================================================================
+===PRETTIER
+>>npm i -D prettier
+make .prettier.rc file
+
+{
+    "singleQuote:false",
+    "bracketSpacing":true,
+    "tabwidth:2",
+    "trailingComma:es5",
+    "semi:true",
+}
+
+make .prettierignore file
+
+/.vscode
+/node_modules
+./dist
+
+*.env
+.env
+.env.*

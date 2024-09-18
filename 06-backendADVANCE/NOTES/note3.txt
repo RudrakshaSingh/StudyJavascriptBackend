@@ -1,0 +1,4 @@
+throw err =>process exit
+
+nodejs give,no need to import.different no for different exit
+process.exit(1)
