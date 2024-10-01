@@ -1,0 +1,4 @@
+.pre("functionality",callback)  hook
+functions executed one after another,when each middleware calls
+
+dont write arrow function as in arrow function we dont get this ka reference
