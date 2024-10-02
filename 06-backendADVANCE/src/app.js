@@ -19,4 +19,12 @@ app.use(express.static("public"));//to stores file in folder public like images,
 
 app.use(cookieParser());//server se user ki cookies access and set kar paye
 
+
+//routes import
+import userRouter from "./routes/user.routes.js";
+
+//routes declaration
+app.use("/api/v1/users", userRouter);//goes to multile routes in user.routes
+
+
 export { app };

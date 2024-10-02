@@ -41,3 +41,11 @@ make .prettierignore file
 *.env
 .env
 .env.*
+
+==================================================================
+still how importing userRouter  when name is router in export
+ChatGPT said:
+ChatGPT
+Great question! The name of the variable you use in the export (in this case, router) doesn't 
+affect how you import it. When you use export default, you can choose any name you like when 
+you import it.
