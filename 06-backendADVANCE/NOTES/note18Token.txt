@@ -1,0 +1,8 @@
+access toen is short lived and 
+refresh token is long lived saved in database also and mat
+
+they are used so that user dont have to give user and password again and again
+
+acees token for 1 hr 2 hr to allow user to do work
+refresh/session token if acces token expire,,it will 401 error
+developer made that if they get 401 and user have refresh token they hit endpoint to refresh access token

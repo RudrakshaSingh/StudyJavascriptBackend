@@ -16,14 +16,15 @@ const uploadOnCloudinary = async (localFilePath) => {
 
         //upload the file on cloudinary
         const response = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "auto"//audio,vedio
+            resource_type: "auto",//audio,vedio
+            folder: "youtubeHitesh",
         })
         // file has been uploaded successfully
 
         //response.url is publuic url after upload
         //console.log("file is uploaded on cloudinary ", response.url);
         
-        fs.unlinkSync(localFilePath)
+        fs.unlinkSync(localFilePath)//remove from temp folder
         return response;//returning url response
 
     } catch (error) {//file not uploaded
