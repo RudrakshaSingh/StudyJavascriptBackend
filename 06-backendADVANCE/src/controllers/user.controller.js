@@ -470,11 +470,12 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
       );
 });
 
+//_id give string but moongoose internnaly covert it to object id
 const getWatchHistory = asyncHandler(async (req, res) => {
    const user = await User.aggregate([
       {
          $match: {
-            _id: new mongoose.Types.ObjectId(req.user._id),
+            _id: new mongoose.Types.ObjectId(req.user._id),//covert it as in pipeline  moongoose dont work
          },
       },
       {
@@ -483,14 +484,14 @@ const getWatchHistory = asyncHandler(async (req, res) => {
             localField: "watchHistory",
             foreignField: "_id",
             as: "watchHistory",
-            pipeline: [
+            pipeline: [//nested pipeline
                {
                   $lookup: {
                      from: "users",
-                     localField: "owner",
-                     foreignField: "_id",
+                     localField: "owner",//from vedios model
+                     foreignField: "_id",//in users model
                      as: "owner",
-                     pipeline: [
+                     pipeline: [//to remove wasteful information
                         {
                            $project: {
                               fullName: 1,
@@ -501,10 +502,10 @@ const getWatchHistory = asyncHandler(async (req, res) => {
                      ],
                   },
                },
-               {
+               {//to make the structure better by overwriting owner
                   $addFields: {
                      owner: {
-                        $first: "$owner",
+                        $first: "$owner",//take first element from array
                      },
                   },
                },
@@ -518,7 +519,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
       .json(
          new ApiResponse(
             200,
-            user[0].watchHistory,
+            user[0].watchHistory,//retrn 0 element so dont need to remove password ,id ,email
             "Watch history fetched successfully"
          )
       );
