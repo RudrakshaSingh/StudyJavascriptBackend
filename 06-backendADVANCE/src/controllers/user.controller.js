@@ -399,41 +399,42 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 });
 
 const getUserChannelProfile = asyncHandler(async (req, res) => {
-   const { username } = req.params;
+   const { username } = req.params;//from url
 
    if (!username?.trim()) {
       throw new ApiError(400, "username is missing");
    }
-
+   
+   //value from aggregation we get arrays
    const channel = await User.aggregate([
       {
          $match: {
-            username: username?.toLowerCase(),
+            username: username?.toLowerCase(),//find user to see channel of
+         },
+      },
+      {
+         $lookup: {
+            from: "subscriptions",//model name to see from
+            localField: "_id",   //with _id
+            foreignField: "channel",//with channel
+            as: "subscribers",//name it
          },
       },
       {
          $lookup: {
             from: "subscriptions",
             localField: "_id",
-            foreignField: "channel",
-            as: "subscribers",
-         },
-      },
-      {
-         $lookup: {
-            from: "subscriptions",
-            localField: "_id",
-            foreignField: "subscriber",
+            foreignField: "subscriber",//for how many subscribed by user
             as: "subscribedTo",
          },
       },
       {
-         $addFields: {
+         $addFields: {//add the additional fields
             subscribersCount: {
-               $size: "$subscribers",
+               $size: "$subscribers",//count number of documents from above field
             },
             channelsSubscribedToCount: {
-               $size: "$subscribedTo",
+               $size: "$subscribedTo",//$ for field
             },
             isSubscribed: {
                $cond: {
@@ -445,7 +446,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
          },
       },
       {
-         $project: {
+         $project: {//projection to select the things to pass on
             fullName: 1,
             username: 1,
             subscribersCount: 1,
